@@ -59,9 +59,9 @@ $(document).ready(function() {
     var guessL = '<li>' + guess + '</li>';
     $('#guessList').append(guessL);
     $('#userGuess').val('');
-    incrementCounter(count);
+    incrementCounter();
     checkGuess(guess);
-    
+
 
   });
 
