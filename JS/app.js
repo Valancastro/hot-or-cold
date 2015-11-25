@@ -6,7 +6,7 @@ function incrementCounter() {
   $("#count").text(count);
 };
 
-function checkGuess() {
+function checkGuess(guess) {
   var diff;
   var guessInt = parseInt(guess)
 
@@ -17,18 +17,18 @@ function checkGuess() {
   } else if (guessInt < number) {
     diff = number - guessInt;
   }
-
+console.log(diff)
   if (diff >= 1 && diff <= 10) {
     $('#feedback').text("Very hot!");
-  } else if (diff < 10 & diff <= 20) {
+  } else if (diff >= 11 && diff <= 20) {
     $('#feedback').text("Warmer");
-  } else if (diff < 20 && diff <= 30) {
+  } else if (diff >= 21 && diff <= 30) {
     $('#feedback').text("Warm");
-  } else if (diff < 30 && diff <= 40) {
+  } else if (diff >= 31 && diff <= 40) {
     $('#feedback').text("Cold");
-  } else if (diff < 40 && diff <= 60) {
+  } else if (diff >= 41 && diff <= 60) {
     $('#feedback').text("Ice Cold");
-  } else if (diff < 60 && diff <= 80) {
+  } else if (diff >= 61 && diff <= 80) {
     $('#feedback').text("not even close");
   }
 
@@ -57,17 +57,24 @@ $(document).ready(function() {
     e.preventDefault();
     var guess = $("#userGuess").val();
     var guessL = '<li>' + guess + '</li>';
-    $('#guessList').append(guessL);
-    $('#userGuess').val('');
-    incrementCounter();
-    checkGuess(guess);
+   
+    if (guess == "") {
+    	alert('Add a value!');
+    }
+    	else {
+    		
+    		$('#userGuess').val('');
+		    $('#guessList').append(guessL);
+		    incrementCounter();
+		    checkGuess(guess);
 
-
+    	}
   });
 
   $('.new').on('click', function() {
     window.location.reload(true);
   });
+   
 
 
 });
